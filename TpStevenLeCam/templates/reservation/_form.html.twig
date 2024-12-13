@@ -1,4 +1,25 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+
+<div class="mb-4">
+    {{ form_label(form.date, null, {'label_attr': {'class': 'block text-gray-700 text-sm font-bold mb-2'}}) }}
+    {{ form_widget(form.date, { 'attr': {'class': 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'} }) }}
+    {{ form_errors(form.date, {'attr': {'class': 'text-red-500 text-xs italic'}}) }}
+</div>
+
+<div class="mb-4">
+    {{ form_label(form.timeSlot, null, {'label_attr': {'class': 'block text-gray-700 text-sm font-bold mb-2'}}) }}
+    {{ form_widget(form.timeSlot, { 'attr': {'class': 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'} }) }}
+    {{ form_errors(form.timeSlot, {'attr': {'class': 'text-red-500 text-xs italic'}}) }}
+</div>
+
+<div class="mb-4">
+    {{ form_label(form.user, null, {'label_attr': {'class': 'block text-gray-700 text-sm font-bold mb-2'}}) }}
+    {{ form_widget(form.user, { 'attr': {'class': 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'} }) }}
+    {{ form_errors(form.user, {'attr': {'class': 'text-red-500 text-xs italic'}}) }}
+</div>
+
+<button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+    {{ button_label|default('Créer la réservation') }}
+</button>
+
 {{ form_end(form) }}

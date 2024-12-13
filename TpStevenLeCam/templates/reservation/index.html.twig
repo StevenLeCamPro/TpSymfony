@@ -3,35 +3,35 @@
 {% block title %}Reservation index{% endblock %}
 
 {% block body %}
-    <h1>Reservation index</h1>
+    <h1 class="text-2xl font-bold mb-4">Liste des réservations</h1>
 
-    <table class="table">
+    <table class="min-w-full bg-white border border-gray-200">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Date</th>
-                <th>TimeSlot</th>
-                <th>actions</th>
+                <th class="px-4 py-2 border-b">Id</th>
+                <th class="px-4 py-2 border-b">Date</th>
+                <th class="px-4 py-2 border-b">TimeSlot</th>
+                <th class="px-4 py-2 border-b">Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for reservation in reservations %}
-            <tr>
-                <td>{{ reservation.id }}</td>
-                <td>{{ reservation.date ? reservation.date|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ reservation.timeSlot }}</td>
-                <td>
-                    <a href="{{ path('app_reservation_show', {'id': reservation.id}) }}">show</a>
-                    <a href="{{ path('app_reservation_edit', {'id': reservation.id}) }}">edit</a>
+            <tr class="hover:bg-gray-100">
+                <td class="px-4 py-2 border-b">{{ reservation.id }}</td>
+                <td class="px-4 py-2 border-b">{{ reservation.date ? reservation.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td class="px-4 py-2 border-b">{{ reservation.timeSlot }}</td>
+                <td class="px-4 py-2 border-b">
+                    <a href="{{ path('app_reservation_show', {'id': reservation.id}) }}" class="text-blue-500 hover:underline">Voir</a>
+                    <a href="{{ path('app_reservation_edit', {'id': reservation.id}) }}" class="text-blue-500 hover:underline ml-2">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4" class="px-4 py-2 border-b text-center">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_reservation_new') }}">Create new</a>
+    <a href="{{ path('app_reservation_new') }}" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Create new</a>
 {% endblock %}

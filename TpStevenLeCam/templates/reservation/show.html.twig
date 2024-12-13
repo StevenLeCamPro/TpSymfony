@@ -3,28 +3,33 @@
 {% block title %}Reservation{% endblock %}
 
 {% block body %}
-    <h1>Reservation</h1>
+    <div class="container mx-auto p-4">
+        <h1 class="text-2xl font-bold mb-4">Reservation</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ reservation.id }}</td>
-            </tr>
-            <tr>
-                <th>Date</th>
-                <td>{{ reservation.date ? reservation.date|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>TimeSlot</th>
-                <td>{{ reservation.timeSlot }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <table class="table-auto w-full mb-4">
+            <tbody>
+                <tr class="border-b">
+                    <th class="px-4 py-2 text-left">Id</th>
+                    <td class="px-4 py-2">{{ reservation.id }}</td>
+                </tr>
+                <tr class="border-b">
+                    <th class="px-4 py-2 text-left">Date</th>
+                    <td class="px-4 py-2">{{ reservation.date ? reservation.date|date('Y-m-d H:i:s') : '' }}</td>
+                </tr>
+                <tr class="border-b">
+                    <th class="px-4 py-2 text-left">TimeSlot</th>
+                    <td class="px-4 py-2">{{ reservation.timeSlot }}</td>
+                </tr>
+            </tbody>
+        </table>
 
-    <a href="{{ path('app_reservation_index') }}">back to list</a>
+        <div class="flex space-x-4">
+            <a href="{{ path('app_reservation_index') }}" class="text-blue-500 hover:underline">Retour</a>
+            <a href="{{ path('app_reservation_edit', {'id': reservation.id}) }}" class="text-blue-500 hover:underline">Modifier</a>
+        </div>
 
-    <a href="{{ path('app_reservation_edit', {'id': reservation.id}) }}">edit</a>
-
-    {{ include('reservation/_delete_form.html.twig') }}
+        <div class="mt-4">
+            {{ include('reservation/_delete_form.html.twig') }}
+        </div>
+    </div>
 {% endblock %}

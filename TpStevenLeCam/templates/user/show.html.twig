@@ -1,34 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User{% endblock %}
+{% block title %}{User}{% endblock %}
 
 {% block body %}
-    <h1>User</h1>
+    <h1 class="text-2xl font-bold mb-4">{{user.name}}</h1>
 
-    <table class="table">
+    <table class="table-auto w-full mb-4">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ user.id }}</td>
+            <tr class="border-b">
+                <th class="px-4 py-2 text-left">Id</th>
+                <td class="px-4 py-2">{{ user.id }}</td>
             </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ user.email }}</td>
+            <tr class="border-b">
+                <th class="px-4 py-2 text-left">Email</th>
+                <td class="px-4 py-2">{{ user.email }}</td>
             </tr>
-            <tr>
-                <th>Roles</th>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+            <tr class="border-b">
+                <th class="px-4 py-2 text-left">Roles</th>
+                <td class="px-4 py-2">{{ user.roles ? user.roles|json_encode : '' }}</td>
             </tr>
-            <tr>
-                <th>Password</th>
-                <td>{{ user.password }}</td>
+            <tr class="border-b">
+                <th class="px-4 py-2 text-left">Nom</th>
+                <td class="px-4 py-2">{{ user.name }}</td>
+            </tr>
+            <tr class="border-b">
+                <th class="px-4 py-2 text-left">N°tél</th>
+                <td class="px-4 py-2">{{ user.phoneNumber }}</td>
+            </tr>
+            <tr class="border-b">
+                <th class="px-4 py-2 text-left">Password</th>
+                <td class="px-4 py-2">{{ user.password }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_user_index') }}">back to list</a>
-
-    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+    <div class="flex space-x-4">
+        <a href="{{ path('app_user_index') }}" class="text-blue-500 hover:underline">Retour</a>
+        <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="text-blue-500 hover:underline">Modifier</a>
+    </div>
 
     {{ include('user/_delete_form.html.twig') }}
 {% endblock %}
